@@ -1,0 +1,35 @@
+Step1: composer create-project laravel/laravel Practice1
+
+//Good : Returning view from controller instead from route
+
+Step 2: Create a controller
+Command: php artisan make:controller PagesController
+
+In webphp add path: App\Http\Controllers\PagesController
+Also in web.php, remember syntax:
+Route::method('/keyword',[PagesController::class,'function'])
+
+Step 3:
+Form
+<form action="{{url('upload')}}" method="POST" enctype="multipart/form-data">
+@csrf
+
+Step 4:
+ public function upload(Request $request){
+        $student = new student;
+ 	  $student->name=$request->name;
+	  $student->save();
+    }
+use App\Models\Student;
+
+Step 5: For image create folder inside public, student the same student in parameter of move function
+ $image = $request -> image;
+        $imageName = time(). '.' . $image->
+        getClientOriginalExtension();
+
+        $request->image->move('student',$imageName);
+        $student->image=$imageName;
+
+#remember retrieve ma all, delete ra update ma find
+#remember you have to add request $request in your function when you are
+reading data from form.
